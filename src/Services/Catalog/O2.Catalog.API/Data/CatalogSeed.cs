@@ -9,6 +9,8 @@ namespace O2.Catalog.API.Data
     {
         public static async Task SeedAsync(CatalogContext context)
         {
+            context.Database.EnsureCreated();
+                        
             if (!context.CatalogBrands.Any())
             {
                 context.CatalogBrands.AddRange(GetPreconfiguredCatalogBrands());

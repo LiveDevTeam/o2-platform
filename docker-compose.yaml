@@ -21,7 +21,7 @@ services:
     networks:
       - backend
       - frontend
-    depends_on:
+    depends_on: 
       - mssqlserver
 
 
@@ -29,7 +29,6 @@ services:
     image: "microsoft/mssql-server-linux:latest"
     ports: 
       - "1445:1433"
-    
     container_name: mssqlcontainer
     environment: 
       - ACCEPT_EULA=Y
