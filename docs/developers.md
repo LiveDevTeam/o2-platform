@@ -11,3 +11,8 @@ dotnet tool install --global dotnet-ef
 dotnet ef migrations add InitMigration -o Data/Migrations
 *** On Windows ***
 dotnet ef migrations add InitMigration -o Data/Migrations -c
+
+
+
+
+docker build -t o2bionics/o2-catalog.api .
