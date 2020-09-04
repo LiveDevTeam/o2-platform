@@ -18,7 +18,6 @@ namespace O2.Catalog.API
                 try
                 {
                     var context = services.GetRequiredService<CatalogContext>();
-                    
                     CatalogSeed.SeedAsync(context).Wait();
                 }
                 catch (Exception ex)
