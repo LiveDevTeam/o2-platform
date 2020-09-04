@@ -12,7 +12,7 @@ services:
     image: o2bionics/o2-catalog.api
     environment:
       - DatabaseServer=mssqlserver
-      - DatabaseName=CatalogDb
+      - DatabaseName=O2Platfrom.CatalogDb
       - DatabaseUser=sa
       - DatabasePassword=_DEVELOPER_RACE_
 
