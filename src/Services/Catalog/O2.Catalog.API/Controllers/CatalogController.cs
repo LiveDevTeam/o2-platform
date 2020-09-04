@@ -114,7 +114,7 @@ namespace O2.Catalog.API.Controllers
             return Ok(model);
         }
 
-        //GET api/Catalog/item/withname/Wonder?pageSize=4&pageIndex=3]
+        //GET api/Catalog/items/type/1/brand/null[?pageSize=4&pageIndex=0]]
         [HttpGet]
         [Route("[action]/type/{catalogTypeId}/brand/{catalogBrandId}")]
         public async Task<IActionResult> Items(int? catalogTypeId, int? catalogBrandId, [FromQuery] int pageSize = 6, [FromQuery] int pageIndex = 0)
@@ -144,6 +144,57 @@ namespace O2.Catalog.API.Controllers
             var model = new PaginatedItemsViewModel<CatalogItem>(pageIndex, pageSize, totalItems, itemOnPage);
 
             return Ok(model);
+        }
+
+
+        [HttpPost]
+        [Route("items")]
+        public async Task<IActionResult> CreateProduct([FromBody]CatalogItem product)
+        {
+            var item = new CatalogItem
+            {
+                CatalogBrandId = product.CatalogBrandId,
+                CatalogTypeId = product.CatalogTypeId,
+                Description = product.Description,
+                Name = product.Name,
+                PictureFileName = product.PictureFileName,
+                Price = product.Price
+            };
+
+            _catalogContext.CatalogItems.Add(item);
+            await _catalogContext.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetItemById), new { id = item.Id });
+        }
+
+        [HttpPut]
+        [Route("Items")]
+        public async Task<IActionResult> UpdateProduct([FromBody] CatalogItem productToUpdate)
+        {
+            var catalogItem = await _catalogContext.CatalogItems.SingleOrDefaultAsync(i => i.Id == productToUpdate.Id);
+
+            if (catalogItem == null)
+                return NotFound(new { Message = $"item with id {productToUpdate.Id} not found." });
+
+            catalogItem = productToUpdate;
+            _catalogContext.CatalogItems.Update(catalogItem);
+
+            await _catalogContext.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetItemById), new { id = productToUpdate.Id });
+
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _catalogContext.CatalogItems.SingleOrDefaultAsync(c => c.Id == id);
+            if (product == null)
+                return NotFound(new { Message = $"item with id {product.Id} not found." });
+
+            _catalogContext.CatalogItems.Remove(product);
+            await _catalogContext.SaveChangesAsync();
+
+            return NoContent();
         }
 
         private List<CatalogItem> ChangeUrlPlaceHolder(List<CatalogItem> items)
