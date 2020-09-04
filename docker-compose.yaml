@@ -7,8 +7,9 @@ networks:
 services:
   catalog:
     build:
-      context: .\scr\Services\Catalog\O2.Catalog.API
+      context: ./src/Services/Catalog/O2.Catalog.API
       dockerfile: Dockerfile
+    image: o2bionics/o2-catalog.api
     environment:
       - DatabaseServer=mssqlserver
       - DatabaseName=CatalogDb

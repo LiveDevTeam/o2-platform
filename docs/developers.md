@@ -16,3 +16,6 @@ dotnet ef migrations add InitMigration -o Data/Migrations -c
 
 
 docker build -t o2bionics/o2-catalog.api .
+
+*** delete all images ***
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)

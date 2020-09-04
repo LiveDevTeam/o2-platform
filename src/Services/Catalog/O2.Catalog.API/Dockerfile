@@ -14,6 +14,6 @@ COPY --from=build /out /app/
 
 WORKDIR /app
 
-ENTRYPOINT ["dotnet", "O2.Product.API.dll"]
+ENTRYPOINT ["dotnet", "O2.Catalog.API.dll"]
 
 

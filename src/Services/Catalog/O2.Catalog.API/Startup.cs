@@ -28,7 +28,7 @@ namespace O2.Catalog.API
             var database = Configuration["DatabaseName"];
             var user = Configuration["DatabaseUser"];
             var password = Configuration["DatabaseUserPassword"];
-            var connectionString = string.Format("Server={0}; Database={1}; User={2}; Password={3};", server, database, user, password);
+            var connectionString = string.Format("Server={0}; Database={1}; User Id={2}; Password={3};", server, database, user, password);
 
             //services.AddDbContext<CatalogContext>(options => options.UseSqlServer(Configuration["ConnectionString"]));
             services.AddDbContext<CatalogContext>(options => options.UseSqlServer(connectionString));
