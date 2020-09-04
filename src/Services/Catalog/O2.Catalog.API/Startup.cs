@@ -23,6 +23,19 @@ namespace O2.Catalog.API
 
             services.AddDbContext<CatalogContext>(options => options.UseSqlServer(Configuration["ConnectionString"]));
             services.AddMvc();
+
+            services.AddSwaggerGen(option =>
+            {
+                option.DescribeAllEnumsAsStrings();
+                option.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info()
+                {
+                      Title="O2 Catalog API - Product Catalog HTTP API",
+                      Version="v1",
+                      Description="The Product Catalog Microservice HTTP API. This is a Data-Drive/CRUID microservice",
+                      TermsOfService="Termns of Service"
+                });
+                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,7 +45,11 @@ namespace O2.Catalog.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c=>
+            {
+                c.SwaggerEndpoint($"/swagger/v1/swagger.json", "O2 Catalog API V1");
+            });
             app.UseMvc();
         }
     }

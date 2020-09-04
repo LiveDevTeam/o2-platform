@@ -53,7 +53,7 @@ namespace O2.Catalog.API.Controllers
         }
 
         [HttpGet]
-        [Route("items/{id:int}]")]
+        [Route("items/{id:int}")]
         public async Task<IActionResult> GetItemById(int id)
         {
             if(id<=0)
@@ -75,7 +75,7 @@ namespace O2.Catalog.API.Controllers
         //GET api/Catalog/item[?pageSize=4&pageIndex=3]
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> Items([FromQuery] int pageSize=6,[FromQuery] int pageIndex = 0)
+        public async Task<IActionResult> Items([FromQuery] int pageSize = 6,[FromQuery] int pageIndex = 0)
         {
             var totalItems = await _catalogContext.CatalogItems
                 .LongCountAsync();
