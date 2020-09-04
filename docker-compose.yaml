@@ -14,8 +14,7 @@ services:
       - DatabaseServer=mssqlserver
       - DatabaseName=O2Platfrom.CatalogDb
       - DatabaseUser=sa
-      - DatabasePassword=_DEVELOPER_RACE_
-
+      - DatabaseUserPassword=_DEVELOPER_RACE_
     container_name: catalogapi
     ports:
       - "5000:80"
@@ -31,7 +30,7 @@ services:
     ports: 
       - "1445:1433"
     
-    container_name: mssqlservercontainer
+    container_name: mssqlcontainer
     environment: 
       - ACCEPT_EULA=Y
       - SA_PASSWORD=_DEVELOPER_RACE_
