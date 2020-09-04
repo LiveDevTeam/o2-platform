@@ -9,7 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3C25676F-6D8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{E1E12967-F79F-40BF-98F5-7FB779181FDD}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "O2.Catalog.API", "Services\Catalog\O2.Catalog.API\O2.Catalog.API.csproj", "{2876E8F1-5575-439B-8C71-D16F908E4065}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Catalog.API", "Services\Catalog\O2.Catalog.API\O2.Catalog.API.csproj", "{2876E8F1-5575-439B-8C71-D16F908E4065}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{91CC9341-E071-4301-A156-940BC0895FAB}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
