@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using O2.Catalog.API.Domain;
 
 namespace O2.Catalog.API.Data
@@ -9,8 +10,8 @@ namespace O2.Catalog.API.Data
     {
         public static async Task SeedAsync(CatalogContext context)
         {
-            context.Database.EnsureCreated();
-                        
+            context.Database.Migrate();
+
             if (!context.CatalogBrands.Any())
             {
                 context.CatalogBrands.AddRange(GetPreconfiguredCatalogBrands());
@@ -66,6 +67,105 @@ namespace O2.Catalog.API.Data
                     Description="Вы обучаетесь в группе от 5 до 10 человек",
                     Price=7900,
                     PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/1"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },//Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
+                },
+                //Traning
+                new CatalogItem
+                {
+                    CatalogBrandId=1,
+                    CatalogTypeId=1,
+                    Name="Ундивидуальный ПФР",
+                    Description="Вы обучаетесь в группе от 1 до 5 человек",
+                    Price=7900,
+                    PictureUrl="http://externalcatalogbaseurltobereplaced/api/pic/2"
                 }
                 //new CatalogItem
                 //{

@@ -199,7 +199,7 @@ namespace O2.Catalog.API.Controllers
 
         private List<CatalogItem> ChangeUrlPlaceHolder(List<CatalogItem> items)
         {
-           items.ForEach(x=>x.PictureUrl.Replace("http://externalcatalogbaseurltobereplaced", _settings.Value.ExternalCatalogBaseUrl));
+           items.ForEach(x => x.PictureUrl = x.PictureUrl.Replace("http://externalcatalogbaseurltobereplaced", _settings.Value.ExternalCatalogBaseUrl));
            return items;
         }
     }
