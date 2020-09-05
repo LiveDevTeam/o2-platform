@@ -3,6 +3,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RootNamespace>O2.Catalog.API</RootNamespace>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />

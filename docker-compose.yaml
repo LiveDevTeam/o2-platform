@@ -5,6 +5,23 @@ networks:
   backend:
 
 services:
+  shopwebmvc:
+    build:
+      context: ./src/Web/ShopWebMvc
+      dockerfile: Dockerfile
+    image: o2bionics/o2-shopwebmvc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CatalogUrl=http://catalog
+    container_name: shopwebmvc-webfront
+    ports: 
+      - "5500:80"
+    networks:
+      - backend
+      - frontend
+    depends_on:
+      - catalog 
+
   catalog:
     build:
       context: ./src/Services/Catalog/O2.Catalog.API

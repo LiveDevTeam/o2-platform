@@ -11,7 +11,7 @@ namespace ShopWebMvc.Models
 
         public decimal Price { get; set; }
 
-        public string PictureUri { get; set; }
+        public string PictureUrl { get; set; }
 
         public int CatalogBrandId { get; set; }
 
