@@ -1,13 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0"><PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
-<Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
-</PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.App">
+      <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
+      <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
   </ItemGroup>
 
   <ItemGroup>
@@ -164,5 +170,151 @@
     <Content Remove="bundleconfig.json" />
     <Content Remove="appsettings.Development.json" />
     <Content Remove="Properties\launchSettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\css\sitestripe.css" />
+    <None Include="wwwroot\css\sitestripe.min.css" />
+    <None Include="wwwroot\css\site.min.css" />
+    <None Include="wwwroot\css\megamenu.css" />
+    <None Include="wwwroot\css\app.css" />
+    <None Include="wwwroot\css\form.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\css\site.css" />
+    <None Include="wwwroot\css\app.component.css" />
+    <None Include="wwwroot\css\etalage.css" />
+    <None Include="wwwroot\css\basket\basket.component.css" />
+    <None Include="wwwroot\css\basket\basket-status\basket-status.component.css" />
+    <None Include="wwwroot\css\catalog\catalog.component.css" />
+    <None Include="wwwroot\css\shared\components\identity\identity.css" />
+    <None Include="wwwroot\css\shared\components\header\header.css" />
+    <None Include="wwwroot\css\shared\components\pager\pager.css" />
+    <None Include="wwwroot\images\s_arrow.png" />
+    <None Include="wwwroot\images\down_arrow.png" />
+    <None Include="wwwroot\images\wish.png" />
+    <None Include="wwwroot\images\Thumbs.db" />
+    <None Include="wwwroot\images\plus.png" />
+    <None Include="wwwroot\images\border.png" />
+    <None Include="wwwroot\images\nav_img1.jpg" />
+    <None Include="wwwroot\images\tw.psd" />
+    <None Include="wwwroot\images\as.png" />
+    <None Include="wwwroot\images\nav_img2.jpg" />
+    <None Include="wwwroot\images\banner4.svg" />
+    <None Include="wwwroot\images\img-sprite.psd" />
+    <None Include="wwwroot\images\main_banner_text.png" />
+    <None Include="wwwroot\images\img-sprite.png" />
+    <None Include="wwwroot\images\cart.png" />
+    <None Include="wwwroot\images\us.png" />
+    <None Include="wwwroot\images\banner1.svg" />
+    <None Include="wwwroot\images\banner3.svg" />
+    <None Include="wwwroot\images\my_orders.png" />
+    <None Include="wwwroot\images\zoom.png" />
+    <None Include="wwwroot\images\s_arrow.psd" />
+    <None Include="wwwroot\images\banner.jpg" />
+    <None Include="wwwroot\images\nz.png" />
+    <None Include="wwwroot\images\banner2.svg" />
+    <None Include="wwwroot\images\banner2.jpg" />
+    <None Include="wwwroot\images\brand_dark.png" />
+    <None Include="wwwroot\images\arrows.psd" />
+    <None Include="wwwroot\images\radius.png" />
+    <None Include="wwwroot\images\arrow-right.svg" />
+    <None Include="wwwroot\images\banner1.jpg" />
+    <None Include="wwwroot\images\logout.png" />
+    <None Include="wwwroot\images\main_banner_text.svg" />
+    <None Include="wwwroot\images\banner-3.jpg" />
+    <None Include="wwwroot\images\arrow.png" />
+    <None Include="wwwroot\images\fb.psd" />
+    <None Include="wwwroot\images\banner-2.jpg" />
+    <None Include="wwwroot\images\pk.png" />
+    <None Include="wwwroot\images\radius.psd" />
+    <None Include="wwwroot\images\arrow-down.png" />
+    <None Include="wwwroot\images\arrows.png" />
+    <None Include="wwwroot\images\b_star.png" />
+    <None Include="wwwroot\images\refresh.svg" />
+    <None Include="wwwroot\images\b-arrow.png" />
+    <None Include="wwwroot\images\f_icon.png" />
+    <None Include="wwwroot\images\g+.psd" />
+    <None Include="wwwroot\images\logo.png" />
+    <None Include="wwwroot\images\srl.png" />
+    <None Include="wwwroot\images\logo-4.png" />
+    <None Include="wwwroot\images\logo.psd" />
+    <None Include="wwwroot\images\main_banner.png" />
+    <None Include="wwwroot\images\social.psd" />
+    <None Include="wwwroot\images\uk.png" />
+    <None Include="wwwroot\images\star.png" />
+    <None Include="wwwroot\images\f_icon1.png" />
+    <None Include="wwwroot\images\star.psd" />
+    <None Include="wwwroot\images\nav_img.jpg" />
+    <None Include="wwwroot\images\f_icon2.png" />
+    <None Include="wwwroot\images\brand.png" />
+    <None Include="wwwroot\images\arrow2.gif" />
+    <None Include="wwwroot\images\creditcards\forbru.png" />
+    <None Include="wwwroot\images\creditcards\discover.png" />
+    <None Include="wwwroot\images\creditcards\solo.png" />
+    <None Include="wwwroot\images\creditcards\shopify.png" />
+    <None Include="wwwroot\images\creditcards\diners.png" />
+    <None Include="wwwroot\images\creditcards\laser.png" />
+    <None Include="wwwroot\images\creditcards\maestro.png" />
+    <None Include="wwwroot\images\creditcards\visa.png" />
+    <None Include="wwwroot\images\creditcards\dankort.png" />
+    <None Include="wwwroot\images\creditcards\money.png" />
+    <None Include="wwwroot\images\creditcards\paypa.png" />
+    <None Include="wwwroot\images\creditcards\credit.png" />
+    <None Include="wwwroot\images\creditcards\jcb.png" />
+    <None Include="wwwroot\images\creditcards\amex.png" />
+    <None Include="wwwroot\images\creditcards\mastercard.png" />
+    <None Include="wwwroot\images\creditcards\google.png" />
+    <None Include="wwwroot\js\jquery.jscrollpane.min.js" />
+    <None Include="wwwroot\js\easing.js" />
+    <None Include="wwwroot\js\site.min.js" />
+    <None Include="wwwroot\js\jquery.flexisel.js" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\js\move-top.js" />
+    <None Include="wwwroot\js\jquery.etalage.min.js" />
+    <None Include="wwwroot\js\megamenu.js" />
+    <None Include="wwwroot\js\jquery.wmuSlider.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\fonts\Montserrat-Regular.woff2" />
+    <None Include="wwwroot\fonts\Montserrat-Bold.eot" />
+    <None Include="wwwroot\fonts\Montserrat-Regular.woff" />
+    <None Include="wwwroot\fonts\Montserrat-Bold.woff2" />
+    <None Include="wwwroot\fonts\Montserrat-Bold.ttf" />
+    <None Include="wwwroot\fonts\Montserrat-Regular.svg" />
+    <None Include="wwwroot\fonts\Montserrat-Regular.eot" />
+    <None Include="wwwroot\fonts\Montserrat-Bold.svg" />
+    <None Include="wwwroot\fonts\Montserrat-Regular.ttf" />
+    <None Include="wwwroot\fonts\Montserrat-Bold.woff" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\bootstrap\.bower.json" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\jquery\.bower.json" />
+    <None Include="wwwroot\lib\jquery\LICENSE.txt" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\.bower.json" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery-validation\.bower.json" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
   </ItemGroup>
 </Project>
