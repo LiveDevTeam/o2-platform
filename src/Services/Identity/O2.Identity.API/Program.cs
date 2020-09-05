@@ -5,8 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using O2.Identity.API.Data;
+using O2.Identity.API.Models;
 
 namespace O2.Identity.API
 {
@@ -14,7 +18,30 @@ namespace O2.Identity.API
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    // var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    IdentityDbInit.Initialize(context, userManager);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the AuthorizationServer database.");
+                }
+            }
+
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

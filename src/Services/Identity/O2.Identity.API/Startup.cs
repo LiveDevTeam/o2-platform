@@ -27,7 +27,7 @@ namespace O2.Identity.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -37,6 +37,17 @@ namespace O2.Identity.API
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            // configure identity server with in-memory stores, keys, clients and scopes
+            services.AddIdentityServer()
+                .AddDeveloperSigningCredential()
+                .AddInMemoryPersistedGrants()
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApiResources())
+                .AddInMemoryClients(Config.GetClients(Config.GetUrls(Configuration)))
+                .AddAspNetIdentity<ApplicationUser>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +56,7 @@ namespace O2.Identity.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
                 app.UseDatabaseErrorPage();
             }
             else
@@ -54,7 +66,8 @@ namespace O2.Identity.API
 
             app.UseStaticFiles();
 
-            app.UseAuthentication();
+            // app.UseIdentity(); // not needed, since UseIdentityServer adds the authentication middleware
+            app.UseIdentityServer();
 
             app.UseMvc(routes =>
             {

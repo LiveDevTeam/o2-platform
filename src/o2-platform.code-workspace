@@ -4,5 +4,24 @@
 			"path": ".."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"sqltools.connections": [
+			{
+				"database": "master",
+				"driver": "MSSQL",
+				"group": "docker",
+				"mssqlOptions": {
+					"appName": "SQLTools",
+					"encrypt": true,
+					"useUTC": true
+				},
+				"name": "docker-mssql",
+				"password": "_DEVELOPER_RACE_",
+				"port": 1445,
+				"previewLimit": 50,
+				"server": "localhost",
+				"username": "sa"
+			}
+		]
+	}
 }

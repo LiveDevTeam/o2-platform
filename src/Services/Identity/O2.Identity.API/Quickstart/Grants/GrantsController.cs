@@ -1,4 +1,4 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
@@ -9,32 +9,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using IdentityServer4.Events;
-using IdentityServer4.Extensions;
 
-namespace IdentityServer
+namespace IdentityServer4.Quickstart.UI
 {
     /// <summary>
     /// This sample controller allows a user to revoke grants given to clients
     /// </summary>
     [SecurityHeaders]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = IdentityServer4.IdentityServerConstants.DefaultCookieAuthenticationScheme)]
     public class GrantsController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clients;
         private readonly IResourceStore _resources;
-        private readonly IEventService _events;
 
         public GrantsController(IIdentityServerInteractionService interaction,
             IClientStore clients,
-            IResourceStore resources,
-            IEventService events)
+            IResourceStore resources)
         {
             _interaction = interaction;
             _clients = clients;
             _resources = resources;
-            _events = events;
         }
 
         /// <summary>
@@ -54,8 +49,6 @@ namespace IdentityServer
         public async Task<IActionResult> Revoke(string clientId)
         {
             await _interaction.RevokeUserConsentAsync(clientId);
-            await _events.RaiseAsync(new GrantsRevokedEvent(User.GetSubjectId(), clientId));
-
             return RedirectToAction("Index");
         }
 
