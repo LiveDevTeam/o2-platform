@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ShopWebMvc.Models;
 using ShopWebMvc.Services;
 using ShopWebMvc.ViewModels;
 
-namespace WebMvc.Controllers
+namespace ShopWebMvc.Controllers
 {
     public class CatalogController : Controller
     {
@@ -16,17 +15,17 @@ namespace WebMvc.Controllers
         public CatalogController(ICatalogService catalogSvc) =>
             _catalogSvc = catalogSvc;
 
-        public async Task<IActionResult> Index(int? BrandFilterApplied, int? TypesFilterApplied, int? page)
+        public async Task<IActionResult> Index(int? brandFilterApplied, int? typesFilterApplied, int? page)
         {
             int itemsPage=10 ;
-            var catalog = await _catalogSvc.GetCatalogItems(page ?? 0, itemsPage, BrandFilterApplied, TypesFilterApplied);
+            var catalog = await _catalogSvc.GetCatalogItems(page ?? 0, itemsPage, brandFilterApplied, typesFilterApplied);
             var vm = new CatalogIndexViewModel()
             {
                 CatalogItems = catalog.Data,
                 Brands = await _catalogSvc.GetBrands(),
                 Types = await _catalogSvc.GetTypes(),
-                BrandFilterApplied = BrandFilterApplied ?? 0,
-                TypesFilterApplied = TypesFilterApplied ?? 0,
+                BrandFilterApplied = brandFilterApplied ?? 0,
+                TypesFilterApplied = typesFilterApplied ?? 0,
                 PaginationInfo = new PaginationInfo()
                 {
                     ActualPage = page ?? 0,
@@ -49,12 +48,12 @@ namespace WebMvc.Controllers
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
+        // public IActionResult Contact()
+        // {
+        //     ViewData["Message"] = "Your contact page.";
+        //
+        //     return View();
+        // }
 
         public IActionResult Error()
         {
